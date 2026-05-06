@@ -15,4 +15,8 @@ public interface FocusBlockRepository extends JpaRepository<FocusBlock, Long> {
     List<FocusBlock> findByUserAndStatus(User user, BlockStatus status);
 
     List<FocusBlock> findByUserAndCreatedAtAfter(User user, LocalDateTime since);
+
+    List<FocusBlock> findByStatus(BlockStatus status);
+
+    List<FocusBlock> findByUserAndStatusAndStartTimeBetween(User user, BlockStatus status, LocalDateTime from, LocalDateTime to);
 }
