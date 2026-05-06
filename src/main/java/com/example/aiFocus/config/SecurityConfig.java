@@ -53,6 +53,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/register", "/api/auth/login").permitAll()
                         .requestMatchers("/api/calendar/oauth2/callback").permitAll()
+                        .requestMatchers("/api/focus/**").authenticated()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -99,4 +100,3 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder(10);
     }
 }
-
